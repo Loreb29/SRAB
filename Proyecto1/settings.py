@@ -11,11 +11,16 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+current_directory = os.getcwd()
+direc=os.path.join(current_directory, "Proyecto1/plantillas/static")
+directo=os.path.join(current_directory, "Proyecto1/plantillas")
+direc2=direc.replace("\\", "/")
+directo2=directo.replace("\\", "/")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -27,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-STATICFILES_DIRS=['C:/Users/juand/Desktop/Django/Proyecto/Proyecto1/plantillas/static']
+STATICFILES_DIRS=[direc2]
 
 # Application definition
 
@@ -56,7 +61,7 @@ ROOT_URLCONF = 'Proyecto1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/juand/Desktop/Django/Proyecto/Proyecto1/plantillas'],
+        'DIRS': [directo2],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
