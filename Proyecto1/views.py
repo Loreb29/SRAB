@@ -40,6 +40,5 @@ def SRAB(request):
     fin2=random.randint(21,35)
     fin2=str(fin2)
     lista={"nombre1":nombre1,"nombre2":nombre2,"apellido1":apellido1,"apellido2":apellido2,"fin1":fin1,"fin2":fin2,"lugar":lugar,"nombre":nombre,"clave":clave,"num":h}
-    Estudiantes.save()
     return render(request,'index.html',lista)
 
