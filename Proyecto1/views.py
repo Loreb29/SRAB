@@ -4,11 +4,14 @@ from tkinter import N
 from django.http import HttpResponseRedirect
 from django.template import Template,Context
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from datos.models import Estudiantes
 import random
 import datetime
 import os
+def BUSCADOR(request):
+    
+    return render(request,'static/ID/index.html')
 
 def SRAB(request):
     h=random.randint(1,5)
@@ -40,8 +43,8 @@ def SRAB(request):
     fin2=random.randint(21,35)
     fin2=str(fin2)
     lista={"nombre1":nombre1,"nombre2":nombre2,"apellido1":apellido1,"apellido2":apellido2,"fin1":fin1,"fin2":fin2,"lugar":lugar,"nombre":nombre,"clave":clave,"num":h}
+    if request.method=="GET":
+        return redirect('/SRAB/Buscador')
     return render(request,'index.html',lista)
 
-def BUSCADOR(request):
-    
-    return render(request,'ID_searcher_prototype/index.html')
+

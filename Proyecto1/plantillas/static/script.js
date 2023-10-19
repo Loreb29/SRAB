@@ -9,8 +9,7 @@ const $btnGetOut = document.querySelector('.get-out');
 
 document.addEventListener('click', e => {
     if (e.target === $btnSignIn  || e.target === $btnSignUp){
-        $signIn.classList.toggle('active');
-        $signUp.classList.toggle('active');
+        window.location.replace("http://www.w3schools.com");
     }
 });
 

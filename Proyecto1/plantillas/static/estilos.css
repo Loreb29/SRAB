@@ -39,7 +39,7 @@ body {
     padding: 1rem 0;
 }
 
-.message button {
+.message input {
     padding: 1rem;
     font-weight: 400;
     background-color: #a0e66c;
@@ -53,7 +53,7 @@ body {
     color: #fff;
 } 
 
-.message button:hover {
+.message input:hover {
     background-color: #6ce6c1;
 }
 

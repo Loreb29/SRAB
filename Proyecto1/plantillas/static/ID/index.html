@@ -1,15 +1,16 @@
+{% load static %}
 <html lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>PROTOTIPO BUSCADOR DE CÉDULAS</title>
     <meta name="description" content="Buscador de cédulas prototipo UdeC">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'ID/img/style.css'%}">
 </head>
 <body>
-    <div class="srab_logo"><img src="img/Icono.png" alt="nothing" width="100px"></div>
+    <div class="srab_logo"><img src="{% static 'ID/img/icono.png'%}" alt="nothing" width="100px"></div>
     <div class="welcome">
         <header>
-            <h2>Bienvenido a SRAB, por favor rellene los siguiente campos</h2>
+            <h2>Rellene los siguiente campos</h2>
         </header>
     </div>
     
@@ -37,7 +38,7 @@
     </div>
 
     <div class="egresado_1">
-        <img src="img/001.jpg" height="250"><br>
+        <img src="{% static 'ID/img/001.jpg'%}" height="250"><br>
         <p>Nombres: </p>
         <p>Apellidos: </p>
         <p>Carrera: </p>
