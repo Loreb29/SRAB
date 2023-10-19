@@ -1,0 +1,36 @@
+body {
+    background-image: url('img/background.png');
+    font-family:Arial, Helvetica, sans-serif;
+    color:#ffffff;
+
+}
+
+select{
+    color:#757575;
+}  
+
+.id-searcher{
+    font-size: 20px;
+}
+
+.srab_logo{
+    position: fixed;
+}
+
+.welcome{
+    text-align: center;
+    margin-bottom: 250px;
+    font-size: 24px;
+}
+
+.form-id-type, .form-id-number{
+    text-align: center;
+    margin:20px auto;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.egresado_1{
+    text-align: center;
+    margin-top: 150px;
+}

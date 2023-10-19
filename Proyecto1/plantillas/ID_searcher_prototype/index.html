@@ -6,16 +6,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <div class="srab_logo"><img src="img/Icono.png" alt="nothing" width="100px"></div>
     <div class="welcome">
         <header>
-            <h2>BIENVENIDO A SRAB, POR FAVOR COMPLETE LOS SIGUIENTES CAMPOS</h2>
+            <h2>Bienvenido a SRAB, por favor rellene los siguiente campos</h2>
         </header>
     </div>
     
     <div class="id_searcher">
-        <form>
-            <label> Tipo de identificación</label>
-            <select class="form-id-type" id="TipoID" name="TipoID">
+        <div class="form-id-type">
+            <label><b>Tipo de identificación *</b></label><br>
+            <select id="TipoID" name="TipoID">
                 <option value = "-1">Seleccione un tipo de documento...</option>
                 <option value = "1">Cédula de Ciudadanía</option>
                 <option value = "2">Tarjeta de Identidad</option>
@@ -25,19 +26,24 @@
                 <option value = "6">Permiso Especial de Permanencia</option>
                 <option value = "7">Permiso Por Protección Temporal</option>
             </select>
-        </form>
-        <input type="text" placeholder="Número de identificación">
-        <button class="get-in">Consultar</button>
+        </div>
+        <div class="form-id-number">
+            <form>
+                <label><b>Número del documento *</b></label><br>
+                <input type="text" placeholder="Número de identificación"></br></br>
+                <input type="submit" value="Subir">
+            </form>
+        </div>
     </div>
 
-    <div class="egresado">
-        <img src="img/001.jpg" width="250"><br>
-        <p>Nombres: Bahir Akiko</p>
-        <p>Apellidos: Schneider Rodríguez</p>
-        <p>Carrera: Ingenieria de Sistemas Y Computación</p>
-        <p>Año de Ingreso: 2015</p>
-        <p>Año de Graduación: 2021</p>
-        <p>Sede/Extensión: Fusagasugá</p>
+    <div class="egresado_1">
+        <img src="img/001.jpg" height="250"><br>
+        <p>Nombres: </p>
+        <p>Apellidos: </p>
+        <p>Carrera: </p>
+        <p>Año de Ingreso: </p>
+        <p>Año de Graduación: </p>
+        <p>Sede/Extensión: </p>
     </div>
 
 </body>
