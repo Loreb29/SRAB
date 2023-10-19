@@ -1,7 +1,7 @@
 from calendar import c
 from re import A
 from tkinter import N
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import Template,Context
 from django.template import loader
 from django.shortcuts import render
@@ -42,3 +42,6 @@ def SRAB(request):
     lista={"nombre1":nombre1,"nombre2":nombre2,"apellido1":apellido1,"apellido2":apellido2,"fin1":fin1,"fin2":fin2,"lugar":lugar,"nombre":nombre,"clave":clave,"num":h}
     return render(request,'index.html',lista)
 
+def BUSCADOR(request):
+    
+    return render(request,'ID_searcher_prototype/index.html')
