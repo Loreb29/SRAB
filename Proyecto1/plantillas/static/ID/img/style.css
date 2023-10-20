@@ -9,7 +9,12 @@ body {
 select{
     color:#757575;
 }  
-
+.egresado{
+    visibility: active;
+}
+.egresado.active{
+    visibility: hidden;
+}
 .id-searcher{
     font-size: 20px;
 }

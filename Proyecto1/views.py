@@ -6,14 +6,79 @@ from django.template import Template,Context
 from django.template import loader
 from django.shortcuts import render,redirect
 from datos.models import Estudiantes
+import django.db.utils
 import random
 import datetime
 import os
 def BUSCADOR(request):
-    est=Estudiantes(IDent=10000162190,Nombre='Juan',Carrera='IngSis')
-    est.save();
-    
-    return render(request,'static/ID/index.html')
+    num=''
+    Nombre=''
+    Apellido=''
+    Carrera=''
+    FIngreso=''
+    FGraduacion=''
+    Sede=''
+    id=''
+    ids=''
+    if request.method=='POST':
+        num=request.POST.get("entrada")
+    cambios=0
+    if num!='':
+        try:
+            for id in Estudiantes.objects.raw(("SELECT id FROM srab.datos_estudiantes WHERE IDent =%s;")%num):
+                id=str(id)
+        except django.db.utils.OperationalError:
+            nose="queponer"
+    if id!='':
+        ids=id[20]
+        if ids=='1':
+            Nombre="Juan"
+            Apellido="Lopez"
+            Carrera="Ingenieria de Sistemas"
+            FIngreso="01/02/2020"
+            FGraduacion="14/11/2025"
+            Sede="Ubate"
+        elif ids=='2':
+            Nombre="Julio"
+            Apellido="Morales"
+            Carrera="Ingenieria de Sistemas"
+            FIngreso="01/02/2019"
+            FGraduacion="14/11/2024"
+            Sede="Ubate" 
+        elif ids=='3':
+            Nombre="Ana"
+            Apellido="Robledo"
+            Carrera="Zootecnia"
+            FIngreso="14/08/2012"
+            FGraduacion="15/07/2018"
+            Sede="Ubate"
+        elif ids=='4':
+            Nombre="Bahir"
+            Apellido="Rocha"
+            Carrera="Ingenieria de Sistemas y Computación"
+            FIngreso="14/08/2010"
+            FGraduacion="15/07/2017"
+            Sede="Fusagasuga"
+        elif ids=='5':
+            Nombre="Ramiro"
+            Apellido="Gonzales"
+            Carrera="Musica"
+            FIngreso="15/07/2021"
+            FGraduacion="01/02/2026"
+            Sede="Zipaquira"
+        elif ids=='6':
+            Nombre="Maria"
+            Apellido="Niño"
+            Carrera="Musica"
+            FIngreso="01/02/2020"
+            FGraduacion="14/11/2025"
+            Sede="Zipaquira"
+        else:
+            ids=''
+            cambios=1
+            print(Nombre)
+    lista={"Nombre":Nombre,"Apellido":Apellido,"Carrera":Carrera,"Ingreso":FIngreso,"Graduacion":FGraduacion,"Sede":Sede,"id":ids}
+    return render(request,'static/ID/index.html',lista)
 
 def SRAB(request):
     h=random.randint(1,5)

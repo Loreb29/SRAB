@@ -5,6 +5,14 @@
     <title>PROTOTIPO BUSCADOR DE CÉDULAS</title>
     <meta name="description" content="Buscador de cédulas prototipo UdeC">
     <link rel="stylesheet" type="text/css" href="{% static 'ID/img/style.css'%}">
+    <style>
+        .egresado{
+                visibility: active;
+            }
+            .egresado.active{
+                visibility: hidden;
+            }
+    </style>
 </head>
 <body>
     <div class="srab_logo"><img src="{% static 'ID/img/icono.png'%}" alt="nothing" width="100px"></div>
@@ -14,7 +22,7 @@
         </header>
     </div>
     
-    <div class="id_searcher">
+    <div class="id_searcher" style="position: relative; top: -200px;">
         <div class="form-id-type">
             <label><b>Tipo de identificación *</b></label><br>
             <select id="TipoID" name="TipoID">
@@ -29,33 +37,51 @@
             </select>
         </div>
         <div class="form-id-number">
-            <form method="GET">
-                <label><b>Número del documento *</b></label><br>
-                <input type="text" placeholder="Número de identificación"></br></br>
-                <input type="submit" value="Subir" style="padding: 1rem;
-                font-weight: 400;
-                background-color: #a0e66c;
-                border-radius: 2rem;
-                border: none;
-                outline: none;
-                cursor: pointer;
-                font-size: 1rem;
-                margin-top: 2rem;
-                transition: all .3s ease-in;
-                color: #fff;">
+            <form method="POST">{% csrf_token %}
+                    <label><b>Número del documento *</b></label><br>
+                    <input type="text" name="entrada" placeholder="Número de identificación"></br></br>
+                    <input type="submit" value="Subir" style="padding: 1rem;
+                    font-weight: 400;
+                    background-color: #a0e66c;
+                    border-radius: 2rem;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    font-size: 1rem;
+                    margin-top: 2rem;
+                    transition: all .3s ease-in;
+                    color: #fff;">
             </form>
         </div>
     </div>
-
-    <div class="egresado_1">
-        <img src="{% static 'ID/img/001.jpg'%}" height="250"><br>
-        <p>Nombres: </p>
-        <p>Apellidos: </p>
-        <p>Carrera: </p>
-        <p>Año de Ingreso: </p>
-        <p>Año de Graduación: </p>
-        <p>Sede/Extensión: </p>
+    <center>
+    <div class="egresado" style="position: relative; top: -200px;">
+            {% if id == '1' %}
+            <img src="{% static 'img/gente/001.jpg' %}" width="250" ><br>
+            {% endif %}
+            {% if id == '2' %}
+            <img src="{% static 'img/gente/002.jpg' %}" width="250" ><br>
+            {% endif %}
+            {% if id == '3' %}
+            <img src="{% static 'img/gente/003M.jpg' %}" width="250" ><br>
+            {% endif %}
+            {% if id == '4' %}
+            <img src="{% static 'img/gente/004.jpg' %}" width="250" ><br>
+            {% endif %}
+            {% if id == '5' %}
+            <img src="{% static 'img/gente/005.jpg' %}" width="250" ><br>
+            {% endif %}
+            {% if id == '6' %}
+            <img src="{% static 'img/gente/009.png' %}" width="250" ><br>
+            {% endif %}
+        <p id="uno">Nombre:{{Nombre}} </p>
+        <p>Apellido:{{Apellido}} </p>
+        <p>Carrera:{{Carrera}} </p>
+        <p>Año de Ingreso:{{Ingreso}} </p>
+        <p>Año de Graduación:{{Graduacion}} </p>
+        <p>Sede/Extensión:{{Sede}} </p>
     </div>
-
+    </center>
 </body>
+<script src="{% static 'ID/img/log.js'%}"></script>
 </html>
