@@ -10,6 +10,8 @@ import random
 import datetime
 import os
 def BUSCADOR(request):
+    est=Estudiantes(IDent=10000162190,Nombre='Juan',Carrera='IngSis')
+    est.save();
     
     return render(request,'static/ID/index.html')
 
@@ -43,8 +45,6 @@ def SRAB(request):
     fin2=random.randint(21,35)
     fin2=str(fin2)
     lista={"nombre1":nombre1,"nombre2":nombre2,"apellido1":apellido1,"apellido2":apellido2,"fin1":fin1,"fin2":fin2,"lugar":lugar,"nombre":nombre,"clave":clave,"num":h}
-    if request.method=="GET":
-        return redirect('/SRAB/Buscador')
     return render(request,'index.html',lista)
 
 

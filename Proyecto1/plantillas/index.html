@@ -16,33 +16,15 @@
                 <h2>Bienvenido de nuevo a SRAB</h2>
                 <img src="{% static 'img/Icono.png' %}" width="150" ><br><br>
                 <p>Para entrar a SRAB, da click aquí</p>
-                <form methot="POST">{% csrf_token %}
-                <input class="sign-up-button" type="submit" value="Entrar" style="padding: 1rem;
-                font-weight: 400;
-                background-color: #a0e66c;
-                border-radius: 2rem;
-                border: none;
-                outline: none;
-                cursor: pointer;
-                font-size: 1rem;
-                margin-top: 2rem;
-                transition: all .3s ease-in;
-                color: #fff;">
-                </form>
+                <button class="sign-un-button" onclick="location.href = '/SRAB/Buscador'">Entrar</button>
             </div>
         </div>
         <form class="formulario">
-            <h2 class="create-account">Crear una cuenta</h2>
+            <h2 class="create-account">Creado por</h2>
             <div class="register">
-                <p>¿Aún no tienes una cuenta?</p><br>
-                <p>Envía un mensaje a <a target="_blank" href="juanguillermosierra2004@gmail.com"><font color="#CEFFD1">este correo electrónico</font></a> con los siguientes datos:</p><br>
-                <ul>
-                    <p>Tu nombre completo.</p><br>
-                    <p>La carrera universitaria que terminaste en la Universidad de Cundinamarca.</p><br>
-                    <p>Escaner de tu documento de identificación al 150%.</p><br>
-                    <p>Año y semestre en el que empezarste y terminaste la carrera.</p><br>
-                    <p>Foto del perfil 2x3 (formato .jpg).</p>  
-                </ul>
+                <p>Juan David Navarrete Niño</p><br>
+                <p>Juan Guillermo Julio Lee Sierra Poveda</p><br>
+                <p>Versión 0.1</p><br>
             </div>
         </form>
     </div>

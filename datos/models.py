@@ -1,6 +1,6 @@
 from django.db import models
 class Estudiantes(models.Model):
-    IDent=models.IntegerField()
+    IDent=models.CharField(max_length=40)
     Nombre=models.CharField(max_length=40)
     Carrera=models.CharField(max_length=20)
 
