@@ -24,11 +24,13 @@ def BUSCADOR(request):
     if num!='':
         try:
             for id in Estudiantes.objects.raw(("SELECT id FROM srab.datos_estudiantes WHERE IDent =%s;")%num):
+
                 id=str(id)
         except django.db.utils.OperationalError:
             nose="queponer"
     if id!='':
         ids=id[20]
+        print(id[20])
         if ids=='1':
             Nombre="Juan"
             Apellido="Lopez"
