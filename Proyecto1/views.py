@@ -16,68 +16,49 @@ def BUSCADOR(request):
     FIngreso=''
     FGraduacion=''
     Sede=''
-    id=''
-    ids=''
+    noombre=''
+    nombres=''
+    caarrera=''
+    carreras=''
     if request.method=='POST':
         num=request.POST.get("entrada")
-    cambios=0
     if num!='':
         try:
-            for id in Estudiantes.objects.raw(("SELECT id FROM srab.datos_estudiantes WHERE IDent =%s;")%num):
-
-                id=str(id)
+            for noombre in Estudiantes.objects.raw(("SELECT Nombre as id FROM srab.datos_estudiantes WHERE IDent =%s;")%num):
+                noombre=str(noombre)
         except django.db.utils.OperationalError:
             nose="queponer"
-    if id!='':
-        ids=id[20]
-        print(id[20])
-        if ids=='1':
-            Nombre="Juan"
-            Apellido="Lopez"
-            Carrera="Ingenieria de Sistemas"
-            FIngreso="01/02/2020"
-            FGraduacion="14/11/2025"
-            Sede="Ubate"
-        elif ids=='2':
-            Nombre="Julio"
-            Apellido="Morales"
-            Carrera="Ingenieria de Sistemas"
-            FIngreso="01/02/2019"
-            FGraduacion="14/11/2024"
-            Sede="Ubate" 
-        elif ids=='3':
-            Nombre="Ana"
-            Apellido="Robledo"
-            Carrera="Zootecnia"
-            FIngreso="14/08/2012"
-            FGraduacion="15/07/2018"
-            Sede="Ubate"
-        elif ids=='4':
-            Nombre="Bahir"
-            Apellido="Rocha"
-            Carrera="Ingenieria de Sistemas y Computación"
-            FIngreso="14/08/2010"
-            FGraduacion="15/07/2017"
-            Sede="Fusagasuga"
-        elif ids=='5':
-            Nombre="Ramiro"
-            Apellido="Gonzales"
-            Carrera="Musica"
-            FIngreso="15/07/2021"
-            FGraduacion="01/02/2026"
-            Sede="Zipaquira"
-        elif ids=='6':
-            Nombre="Maria"
-            Apellido="Niño"
-            Carrera="Musica"
-            FIngreso="01/02/2020"
-            FGraduacion="14/11/2025"
-            Sede="Zipaquira"
-        else:
-            ids=''
-            cambios=1
-            print(Nombre)
-    lista={"Nombre":Nombre,"Apellido":Apellido,"Carrera":Carrera,"Ingreso":FIngreso,"Graduacion":FGraduacion,"Sede":Sede,"id":ids}
+        try:
+            for caarrera in Estudiantes.objects.raw(("SELECT Carrera as id FROM srab.datos_estudiantes WHERE IDent =%s;")%num):
+                caarrera=str(caarrera)
+        except django.db.utils.OperationalError:
+            nose="queponer" 
+    if noombre!='':
+        #ids=id[20]
+        #if ids=='1':
+        #    Nombre="Juan"
+        #    Apellido="Lopez"
+        #    Carrera="Ingenieria de Sistemas"
+        #    FIngreso="01/02/2020"
+        #    FGraduacion="14/11/2025"
+        #    Sede="Ubate"
+        ran1=len(noombre)
+        ran2=len(caarrera)
+        for elemento in range(20,(ran1-1)):
+            nombres=nombres+noombre[elemento]
+        for elemento in range(20,(ran2-1)):
+            carreras=carreras+caarrera[elemento]
+        Nombre=nombres
+        if carreras=="Ig":
+            carreras="Ingenieria de Sistemas"
+        elif carreras=="Zoo":
+            carreras="Zootecnia"
+        elif carreras=="Igc":
+            carreras="Ingenieria de Sistemas y Computación"
+        elif carreras=="Mu":
+            carreras="Musica"
+        Carrera=carreras
+    lista={"Nombre":Nombre,"Apellido":Apellido,"Carrera":Carrera,"Ingreso":FIngreso,"Graduacion":FGraduacion,"Sede":Sede}
     return render(request,'static/ID/indexBusc.html',lista)
 
 def SRAB(request):
