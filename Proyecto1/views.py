@@ -8,6 +8,7 @@ from django.shortcuts import render,redirect
 from datos.models import Estudiantes
 import django.db.utils
 import random
+
 def BUSCADOR(request):
     num=''
     Nombre=''
@@ -60,6 +61,13 @@ def BUSCADOR(request):
         Carrera=carreras
     lista={"Nombre":Nombre,"Apellido":Apellido,"Carrera":Carrera,"Ingreso":FIngreso,"Graduacion":FGraduacion,"Sede":Sede}
     return render(request,'static/ID/indexBusc.html',lista)
+
+def inicio(request):
+    return render(request,'static/admin/indexAdd.html')
+
+
+def subir(request):
+    return render(request,'static/admin/indexLogin.html')
 
 def SRAB(request):
     h=random.randint(1,5)

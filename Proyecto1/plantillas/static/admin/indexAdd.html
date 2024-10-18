@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/icono.ico'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="{% static 'admin/front/indexAdd.css'%}">
+</head>
+<body>
+    <div class="icon">
+        <img src="{% static 'img/icono.png'%}" alt="SRAB">
+    </div>
+    <div class="login-container">
+        <h2>Inicio de sesión</h2>
+        <div class="input-group">
+            <div class="icon-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Icono de usuario">
+            </div>
+            <input type="text" id="username" placeholder="Usuario">
+        </div>
+        <div class="input-group">
+            <div class="icon-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/565/565655.png" alt="Icono de candado">
+            </div>
+            <input type="password" id="password" placeholder="Contraseña">
+        </div>
+        <button class="btn-login">Iniciar</button>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/icono.ico'%}">
+    <title>Página de Registro</title>
+    <link rel="stylesheet" href="{% static 'admin/front/indexLogin.css'%}">
+    <script src="{% static 'admin/front/indexLogin.js'%}" defer></script>
+</head>
+<body>
+    <div class="icon">
+        <img src="{% static 'img/icono.png'%}" alt="SRAB">
+    </div>
+    <div class="header">
+        <div class="welcome">
+            Bienvenido
+        </div>
+        <a class="logout">Cerrar sesión</a>
+    </div>
+    <div class="container">
+        <div class="form-box">
+            <form onsubmit="mostrarMensaje(); return false;">
+                <input type="text" placeholder="Cédula" name="cedula" required>
+                <input type="text" placeholder="Nombre" name="nombre" required>
+                <input type="text" placeholder="Carrera" name="carrera" required>
+                <button type="submit">Subir registro</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
