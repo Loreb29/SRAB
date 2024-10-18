@@ -5,8 +5,9 @@ from django.http import HttpResponseRedirect
 from django.template import Template,Context
 from django.template import loader
 from django.shortcuts import render,redirect
-from datos.models import Estudiantes
+from datos.models import Estudiantes,ADMIN
 import django.db.utils
+from django.db import connections
 import random
 
 def BUSCADOR(request):
@@ -63,11 +64,61 @@ def BUSCADOR(request):
     return render(request,'static/ID/indexBusc.html',lista)
 
 def inicio(request):
-    return render(request,'static/admin/indexAdd.html')
+    user=''
+    password=''
+    global Nombre
+    Nombre=''
+    contraa=''
+    contra=''
+    nombre=''
+    if request.method=='POST':
+        user=request.POST.get("username")
+        password=request.POST.get("password")
+    if user!='':
+        try:
+            for contra in ADMIN.objects.raw(("SELECT Contrasena as id FROM srab.datos_admin WHERE Usuario =\"%s\";")%user):
+                contra=str(contra)
+        except django.db.utils.OperationalError:
+                nose="queponer"
+        try:
+            for nombre in ADMIN.objects.raw(("SELECT NombreAd as id FROM srab.datos_admin WHERE Usuario =\"%s\";")%user):
+                nombre=str(nombre)
+        except django.db.utils.OperationalError:
+                nose="queponer"
+    for elemento in range(14,len(nombre)-1):
+        Nombre=Nombre+nombre[elemento]
+    for elemento in range(14,len(contra)-1):
+        contraa=contraa+contra[elemento]
+    if contraa==password and contraa!='' and password!='':
+        return redirect(subir)
+    return render(request,'static/admin/indexLogin.html')
 
 
 def subir(request):
-    return render(request,'static/admin/indexLogin.html')
+    cedula=''
+    nombre=''
+    carrera=''
+    carreras=''
+    if request.method=='POST':
+        cedula=request.POST.get("cedula")
+        nombre=request.POST.get("nombre")
+        carreras=request.POST.get('carreras',None)
+    match carreras:
+        case "1":
+            carrera="Ig"
+        case "2":
+            carrera="Igc"
+        case "3":
+            carrera="Mu"
+    try:
+        cursor=connections['default'].cursor()
+        cursor.execute(("INSERT INTO srab.datos_estudiantes(IDEnt,Nombre,Carrera) VALUES (\"%s\",\"%s\",\"%s\");")% (cedula,nombre,carrera))
+        print("Huhh")
+    except django.db.utils.OperationalError:
+        nose="queponer"
+        print("Huuhhh")
+    noombre={"Nombre":Nombre}
+    return render(request,'static/admin/indexAdd.html',noombre)
 
 def SRAB(request):
     h=random.randint(1,5)
