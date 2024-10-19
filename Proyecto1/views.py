@@ -110,13 +110,12 @@ def subir(request):
             carrera="Igc"
         case "3":
             carrera="Mu"
-    try:
-        cursor=connections['default'].cursor()
-        cursor.execute(("INSERT INTO srab.datos_estudiantes(IDEnt,Nombre,Carrera) VALUES (\"%s\",\"%s\",\"%s\");")% (cedula,nombre,carrera))
-        print("Huhh")
-    except django.db.utils.OperationalError:
-        nose="queponer"
-        print("Huuhhh")
+    if cedula!='' and nombre!='' and carrera !='':
+        try:
+            cursor=connections['default'].cursor()
+            cursor.execute(("INSERT INTO srab.datos_estudiantes(IDEnt,Nombre,Carrera) VALUES (\"%s\",\"%s\",\"%s\");")% (cedula,nombre,carrera))
+        except django.db.utils.OperationalError:
+            nose="queponer"
     noombre={"Nombre":Nombre}
     return render(request,'static/admin/indexAdd.html',noombre)
 
