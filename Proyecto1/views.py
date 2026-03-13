@@ -1,6 +1,3 @@
-from calendar import c
-from re import A
-from tkinter import N
 from django.http import HttpResponseRedirect
 from django.template import Template,Context
 from django.template import loader
@@ -9,8 +6,11 @@ from datos.models import Estudiantes,ADMIN
 import django.db.utils
 from django.db import connections
 import random
+import hashlib
+
 
 def BUSCADOR(request):
+    valin=hashlib.sha256(("Hello").encode()).hexdigest()
     num=''
     Nombre=''
     Apellido=''
@@ -71,6 +71,7 @@ def inicio(request):
     contraa=''
     contra=''
     nombre=''
+    
     if request.method=='POST':
         user=request.POST.get("username")
         password=request.POST.get("password")
@@ -99,6 +100,11 @@ def subir(request):
     nombre=''
     carrera=''
     carreras=''
+    try:
+        if Nombre=='':
+            return redirect(inicio)
+    except NameError:
+        return redirect(inicio)
     if request.method=='POST':
         cedula=request.POST.get("cedula")
         nombre=request.POST.get("nombre")
