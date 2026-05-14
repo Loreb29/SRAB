@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Proyecto1.views import *
+from Proyecto1 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('SRAB/',SRAB),
-    path('SRAB/Buscador',BUSCADOR),
-    path('SRAB/Admin',inicio),
-    path('SRAB/Admin/Menu',subir)
+    path('SRAB/', views.SRAB, name='srab_home'),
+    path('SRAB/Buscador/', views.BUSCADOR, name='buscador'),
+    path('SRAB/Buscador', views.BUSCADOR),
+    path('SRAB/Buscador/chat/', views.chat_gemini, name='chat_gemini'),
+    path('SRAB/Admin/', views.inicio, name='admin_login'),
+    path('SRAB/Admin', views.inicio),
+    path('SRAB/Admin/Menu/', views.subir, name='admin_menu'),
+    path('SRAB/Admin/Menu', views.subir),
 ]

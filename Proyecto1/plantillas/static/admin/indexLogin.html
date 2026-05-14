@@ -12,8 +12,11 @@
     <div class="icon">
         <img src="{% static 'img/icono.png'%}" alt="SRAB">
     </div>
-    <div class="login-container">
+    <div class="login-container {% if error %}shake{% else %}fade-in{% endif %}">
         <h2>Inicio de sesión</h2>
+        {% if error %}
+            <div class="login-error-message">Credenciales incorrectas</div>
+        {% endif %}
         <form method="POST">{% csrf_token %}
             <div class="input-group">
                 <div class="icon-container">

@@ -20,7 +20,10 @@
         <a class="logout"  onclick="location.href = '/SRAB/Admin'">Cerrar sesión</a>
     </div>
     <div class="container">
-        <div class="form-box">
+        <div class="form-box fade-in">
+            {% if success %}
+                <div class="success-message">Estudiante agregado con éxito</div>
+            {% endif %}
             <form method="POST">{% csrf_token %}
                 <input type="text" placeholder="Cédula" name="cedula" required>
                 <input type="text" placeholder="Nombre" name="nombre" required>

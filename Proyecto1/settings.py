@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'datos.middleware.AdminAuthMiddleware',
 ]
 
 ROOT_URLCONF = 'Proyecto1.urls'
@@ -131,3 +132,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GEMINI_API_KEY = 'AIzaSyApeXMWgj6pUikCBBwfwDY9Q_NZmxBX70s'

@@ -6,5 +6,5 @@ class Estudiantes(models.Model):
 
 class ADMIN(models.Model):
     Usuario=models.CharField(max_length=15)
-    Contrasena=models.CharField(max_length=30)
+    Contrasena=models.CharField(max_length=128)
     NombreAd=models.CharField(max_length=40)
