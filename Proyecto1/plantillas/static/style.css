@@ -1,0 +1,36 @@
+:root{
+    --primary: #006837;
+    --secondary: #004D28;
+    --accent: #D4AF37;
+    --light: #F4F7F6;
+    --card: #FFFFFF;
+    --text-color: #333333;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--light);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.header{
+    background-color: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header-left{
+    display: flex;
+    align-items: center;
+}
