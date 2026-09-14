@@ -30,7 +30,161 @@ body{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-header-left{
+.header-left{
     display: flex;
     align-items: center;
+}
+
+.logo-udec{
+    height: 50px;
+    background-color: white;
+    padding: 5px;
+    border-radius:4px;
+}
+
+.header-center{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.srab-icon{
+    font-size: 2rem;
+}
+
+.srab-title{
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.navbar{
+    background-color: var(--secondary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar li a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.navbar li a:hover{
+    background-color: var(--primary);
+    color: var(--accent);
+}
+
+.main-content{
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.section{
+    background: var(--card);
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    scroll-margin-top: 70px;
+}
+
+.section h2{
+    color: var(--primary);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 5px;
+}
+
+.card-consultar{
+    border-left: 6px solid var(--primary);
+}
+
+.form-group{
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group select,
+.form-group input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-consultar{
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-consultar:hover{
+    background-color: var(--secondary);
+}
+
+.resultado-box{
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 4px;
+    display: none;
+}
+
+.grid-ventajas{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.card{
+    background: #F9F9F9;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #E0E0E0;
+}
+
+.card h3{
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+.faq-item{
+    margin-bottom: 15px;
+}
+
+.faq-item h4{
+    color: var(--secondary);
+}
+
+.footer{
+    text-align: center;
+    padding: 20px;
+    background-color: var(--secondary);
+    color: white;
+    margin-top: 40px;
 }
