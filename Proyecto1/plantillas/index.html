@@ -10,7 +10,7 @@
 <body>
     <header class="header">
         <div class="header-center">
-            <span class="srab-icon">#</span>
+            <span class="srab-icon"><img src="{% static 'img/icono.ico' %}" alt="SRAB"></span>
             <h1 class="srab-title">SRAB</h1>
         </div>
         <div class="header-left">
@@ -29,7 +29,7 @@
 
     <main class="main-content">
         <section class="section card-consultar" id="consultar-titulo">
-            <h2>Consultar Tíitulo</h2>
+            <h2>Consultar Título</h2>
             <form id="consultarForm" onsubmit="event.preventDefault(); consultarDB();">
                 <div class="form-group">
                     <label for="tipoDoc">Tipo de Documento</label>
@@ -65,7 +65,7 @@
                 <p>... abcdefg</p>
                 <li><strong>Seguridad Criptográfica</strong></li>
                 <p>... abcdefg</p>
-                <li>Descentralización</li>
+                <li><strong>Descentralización</strong></li>
                 <p>... abcdefg</p>
             </ul>
         </section>
