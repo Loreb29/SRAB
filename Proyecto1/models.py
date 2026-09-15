@@ -1,3 +1,4 @@
+import hashlib
 from django.db import models
 
 class TituloAcademico(models.Model):
@@ -31,7 +32,8 @@ class TituloAcademico(models.Model):
     fecha_grado = models.DateField(verbose_name="Fecha de Graduación / Salida")
     hash_bloque = models.CharField(
         max_length=64, 
-        unique=True, 
+        unique=True,
+        blank=True,
         verbose_name="Hash del Bloque Blockchain",
         help_text="Hash criptográfico inmutable que identifica el título en la cadena de bloques."
     )
@@ -51,3 +53,15 @@ class TituloAcademico(models.Model):
 
     def __str__(self):
         return f"{self.nombres} {self.apellidos} - {self.carrera} ({self.tipo_documento}: {self.numero_documento})"
+
+    def save(self, *args, **kwargs):
+        if not self.hash_bloque:
+            ultimo_registro = TituloAcademico.objects.order_by('-id').first()
+            if ultimo_registro:
+                self.hash_anterior = ultimo_registro.hash_bloque
+            else:
+                self.hash_anterior = "0"*64
+
+            cadena_datos = f"{self.tipo_documento}{self.numero_documento}{self.nombres}{self.apellidos}{self.carrera}{self.fecha_grado}{self.hash_anterior}"
+            self.hash_bloque = hashlib.sha256(cadena_datos.encode('utf-8')).hexdigest()
+        super().save(*args, **kwargs)                    
