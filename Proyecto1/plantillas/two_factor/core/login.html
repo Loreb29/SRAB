@@ -8,6 +8,33 @@
     <link rel="stylesheet" href="{%static 'css/login.css'%}">
 </head>
 <body>
-    
+    <div class="login-container">
+        <div class="login-header">
+            <img src="{%static 'img/udec-logo.png'%}" alt="Logo UDEC" class="logo">
+            <h2>Acceso Administrativo</h2>
+            <p>Sistema de Registro Académico mediante Blockchain</p>
+        </div>
+
+        <form method="post" class="login-form">
+            {%csrf_token%}
+            {%if wizard.steps.current == 'auth'%}
+                <p class="step-instruction">Ingresa tus credenciales para continuar</p>
+            {%elif wizard.steps.current == 'token'%}
+                <p class="step-instriction">Introduce el código de 6 dígitos de tu app de autenticación</p>
+            {%endif%}
+
+            <div class="form-fields">
+                {{wizard.form.as_p}}
+            </div>
+
+            <button type="submit" class="btn-submit">
+                {%if wizard.steps.current == 'token'%}Verificar Código {%else%}Iniciar Sesión {%endif%}
+            </button>
+        </form>
+
+        <div class="login-footer">
+            <a href="/">← Volver a la pagina de SRAB pública</a>
+        </div>
+    </div>
 </body>
 </html>
