@@ -1,10 +1,14 @@
-async function consultarDB(){
+async function consultarDB(event){
+
+    if (event){
+        event.preventDefault();
+    }
     const tipoDoc = document.getElementById('tipoDoc').value;
     const numDoc = document.getElementById('numDoc').value.trim();
     const resultadoBox = document.getElementById('resultadoConsulta');
 
     if (!tipoDoc || !numDoc){
-        alert("Por favor completa todos los campos")
+        alert("Por favor completa todos los campos");
         return;
     }
 
@@ -12,10 +16,10 @@ async function consultarDB(){
     resultadoBox.style.backgroundColor = '#E8F4FD';
     resultadoBox.style.border = '1px solid #B6D4FE';
     resultadoBox.style.color = '#084298';
-    resultadoBox.innerHTML = `Consultando documento <strong>${tipoDoc} ${numDoc}</strong> en <code>db.sqlite3</code>...`;
+    resultadoBox.innerHTML = `Consultando documento <strong>${tipoDoc} ${numDoc}</strong>`;
 
     try{
-        const response = await fetch(`api/consultar/?tipo_doc=${encodeURIComponent(tipoDoc)}&num_doc=${encodeURIComponent(numDoc)}`)
+        const response = await fetch(`/api/consultar/?tipo_doc=${encodeURIComponent(tipoDoc)}&num_doc=${encodeURIComponent(numDoc)}`);
         const data = await response.json();
 
         if (response.ok && data.encontrado){
@@ -44,14 +48,12 @@ async function consultarDB(){
         resultadoBox.innerHTML = `Error del servidor: No se pudo establecer conexion con la base de datos`;
     }
     
-    setTimeout(() =>{
-        resultadoBox.style.backgroundColor = '#D1E7DD';
-        resultadoBox.style.border = '1px solid #BADBCC';
-        resultadoBox.style.color = '#0F5132';
-        resultadoBox.innerHTML = `
-            Consulta exitosa
-            Documento: ${tipoDoc} ${numDoc}
-            Consulta hecha en <code>db.sqlite3</code>
-        `;
-    }, 1200);
 }
+
+document.addEventListener('DOMContentLoaded', function(){
+    const form = document.getElementById('consultarForm');
+
+    if (form){
+        form.addEventListener('submit', consultarDB); 
+    }
+});

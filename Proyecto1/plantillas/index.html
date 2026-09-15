@@ -1,12 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SRAB - Sistema de Registro Académico mediante Blockchain</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css'%}">
 </head>
+
 <body>
     <header class="header">
         <div class="header-center">
@@ -19,18 +21,18 @@
     </header>
     <nav class="navbar">
         <ul>
-            <li><a href="que-es-srab">¿Qué es SRAB?</a></li>
-            <li><a href="lineamientos-srab">Lineamientos SRAB</a></li>
-            <li><a href="ventajas-srab">Ventajas de SRAB</a></li>
-            <li><a href="preguntas-frecuentes">Preguntas frecuentes</a></li>
-            <li><a href="consultar-titulo">Consultar título</a></li>
+            <li><a href="#que-es-srab">¿Qué es SRAB?</a></li>
+            <li><a href="#lineamientos-srab">Lineamientos SRAB</a></li>
+            <li><a href="#ventajas-srab">Ventajas de SRAB</a></li>
+            <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
+            <li><a href="#consultar-titulo">Consultar título</a></li>
         </ul>
     </nav>
 
     <main class="main-content">
         <section class="section card-consultar" id="consultar-titulo">
             <h2>Consultar Título</h2>
-            <form id="consultarForm" onsubmit="event.preventDefault(); consultarDB();">
+            <form id="consultarForm" onsubmit="return false;">
                 <div class="form-group">
                     <label for="tipoDoc">Tipo de Documento</label>
                     <select name="tipoDoc" id="tipoDoc" required>
@@ -45,9 +47,8 @@
                     <label for="numDoc">Número de Documento:</label>
                     <input type="number" id="numDoc" name="numDoc" required>
                 </div>
-                <button type="submit" class="btn-consultar">Consultar</button>
+                <button type="button" class="btn-consultar" onclick="consultarDB(event)">Consultar</button>
             </form>
-
             <div class="resultado-box" id="resultadoConsulta"></div>
         </section>
 
@@ -75,15 +76,18 @@
             <div class="grid-ventajas">
                 <div class="card">
                     <h3>Para Estudiantes y Egresados</h3>
-                    <p>Brinda un mayor prestigio y validez oficial inmediata a sus títulos en cualquier entorno académico o laboral.</p>
+                    <p>Brinda un mayor prestigio y validez oficial inmediata a sus títulos en cualquier entorno
+                        académico o laboral.</p>
                 </div>
                 <div class="card">
                     <h3>Para Empleadores</h3>
-                    <p>Permite corroborar rápidamente la veracidad de los títulos declarados por los candidatos con una fuente confiable.</p>
+                    <p>Permite corroborar rápidamente la veracidad de los títulos declarados por los candidatos con una
+                        fuente confiable.</p>
                 </div>
                 <div class="card">
                     <h3>Para la Universidad de Cundinamarca</h3>
-                    <p>Protege la integridad académica y la reputación de la Universidad ya que reduce el riesgo de títulos draudulentos.</p>
+                    <p>Protege la integridad académica y la reputación de la Universidad ya que reduce el riesgo de
+                        títulos draudulentos.</p>
                 </div>
             </div>
         </section>
@@ -92,7 +96,8 @@
             <h2>Preguntas frecuentes</h2>
             <div class="faq-item">
                 <h4>¿Cómo verifico la validez de un título?</h4>
-                <p>Ingrese al formuulario de consulta que se encuenta arriba, seleccione el tipo de documento, digite el número de identificación que desea buscar y dele clic en "Consultar"</p>
+                <p>Ingrese al formuulario de consulta que se encuenta arriba, seleccione el tipo de documento, digite el
+                    número de identificación que desea buscar y dele clic en "Consultar"</p>
             </div>
             <div class="faq-item">
                 <h4>¿Tiene algún costo consultar un documento?</h4>
@@ -100,7 +105,8 @@
             </div>
             <div class="faq-item">
                 <h4>¿Qué tecnología potencia el sistema SRAB?</h4>
-                <p>El sistema SRAB es potenciado con Blockchain, este garantiza la transparencia e integridad de los datos a consultar</p>
+                <p>El sistema SRAB es potenciado con Blockchain, este garantiza la transparencia e integridad de los
+                    datos a consultar</p>
             </div>
         </section>
     </main>
@@ -111,4 +117,5 @@
 
     <script src="{% static 'script.js'%}"></script>
 </body>
+
 </html>
