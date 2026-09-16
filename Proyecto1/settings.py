@@ -17,6 +17,12 @@ SECRET_KEY = 'django-insecure-kgyu$rmq++^2i_6%8l&v@*w$y7(t_geieytf-xptaq3f34ip+i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SESSION_COOKIE_AGE = 1200  
+SESSION_SAVE_EVERY_REQUEST = True 
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
 ALLOWED_HOSTS = []
 
 STATICFILES_DIRS=[direc2]
@@ -49,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+TWO_FACTOR_FORCE_OTP_ADMIN = True
 LOGIN_URL = 'two_factor:login'
 LOGIN_REDIRECT_URL = 'admin_home'
 
