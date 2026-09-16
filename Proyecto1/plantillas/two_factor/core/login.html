@@ -17,6 +17,7 @@
 
         <form method="post" class="login-form">
             {%csrf_token%}
+            {{wizard.management_form}}
             {%if wizard.steps.current == 'auth'%}
                 <p class="step-instruction">Ingresa tus credenciales para continuar</p>
             {%elif wizard.steps.current == 'token'%}

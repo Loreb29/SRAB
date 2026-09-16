@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import TituloAcademico
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def admin_home(request):
+    return render(request, 'admin_home.html')
 
 def home(request):
     return render(request, 'index.html')
