@@ -1,11 +1,103 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Dashboard Administrador | SRAB</title>
+    <link rel="stylesheet" href="{%static 'css/admin_home.css'%}">
 </head>
+
 <body>
-    <h1>Bienvenido al Panel Administrativo SRAB</h1>
-    <p>Autenticación de dos factores completada exitosamente.</p>
+    <div class="header">
+        <h1>SRAB - Panel de Administración de Títulos</h1>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <span>Usuario: <strong>{{ request.user.username }}</strong></span>
+            <form action="{% url 'logout' %}" method="post" style="margin: 0;">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn" style="border: none; cursor: pointer;">Cerrar Sesión</button>
+            </form>
+        </div>
+    </div>
+
+    {%if messages%}
+    {%for message in messages%}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {%endfor%}
+    {%endif%}
+
+    <div class="container">
+        <div class="card">
+            <h2>Registrar Nuevo Título</h2>
+            <form method="post">
+                {%csrf_token%}
+                <div class="form-group">
+                    <label>Tipo de Documento</label>
+                    <select name="tipo_documento" required>
+                        <option value="CC">Cédula de Ciudadanía</option>
+                        <option value="TI">Tarjeta de Identidad</option>
+                        <option value="CE">Cédula de Extranjería</option>
+                        <option value="PAS">Pasaporte</option>
+                    </select>select>
+                </div>
+                <div class="form-group">
+                    <label>Número de Documento</label>
+                    <input type="text" name="numero_documento" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="nombres" required>
+                </div>
+                <div class="form-group">
+                    <label>Apellidos</label>
+                    <input type="text" name="apellidos" required>
+                </div>
+                <div class="form-group">
+                    <label>Carrera</label>
+                    <input type="text" name="carrera" placeholder="Ej: Ingeniería de Sistemas" required>
+                </div>
+                <div class="form-group">
+                    <label>Seccional / Sede</label>
+                    <input type="text" name="seccional" placeholder="Ej: Sede Fusagasugá">
+                </div>
+                <div class="form-group">
+                    <label>Fecha de Grado</label>
+                    <input type="date" name="fecha_grado" required>
+                </div>
+                <button type="submit" class="btn-submit">Registrar con Hash SHA-256</button>
+            </form>
+        </div>
+        <div class="card">
+            <h2>Cadena de Bloques de Títulos Registrados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Estudiante</th>
+                        <th>Documento</th>
+                        <th>Programa</th>
+                        <th>Hash Bloque (SHA-256)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for t in titulos%}
+                    <tr>
+                        <td><strong>{{t.nombres}} {{t.apellidos}}</strong></td>
+                        <td>{{t.tipo_documento}}: {{t.numero_documento}}</td>
+                        <td>{{t.carrera}} ({{t.seccional}})</td>
+                        <td>
+                            <div><strong>Prev:</strong> <span class="hash-code">{{t.hash_anterior|slice:":16"}}</span></div>
+                            <div><strong>Bloque:</strong> <span class="hash-code">{{t.hash_bloque|slice:":16"}}</span></div>
+                        </td>
+                    </tr>
+                    {%empty%}
+                    <tr>
+                        <td colspan="4" style="text-align: center;">No hay títulos registrados en el bloque aún</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
+
 </html>
